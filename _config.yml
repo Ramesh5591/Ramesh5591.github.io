@@ -1,9 +1,5 @@
 title: Ramesh
 description: PhD Research Scholar | Data Science | Deep Learning
-theme: minimal-mistakes-jekyll
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 
 author:
   name: Ramesh Eerapagula
