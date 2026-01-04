@@ -1,154 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
   <meta charset="UTF-8">
-  <title>Ramesh Eerapagula | Data Science & Deep Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramesh Eerapagula | Computational Biology & AI Research</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.7;
+      color: #2c3e50;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .tagline {
+      font-size: 1.2em;
+      opacity: 0.95;
+      max-width: 800px;
+      margin: 0 auto;
       line-height: 1.6;
-      color: #222;
     }
-    h1 {
-      border-bottom: 2px solid #444;
-      padding-bottom: 10px;
+    
+    nav {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
+    
+    nav a {
+      color: #667eea;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    nav a:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .content {
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    
     h2 {
-      color: #333;
-      margin-top: 40px;
+      color: #667eea;
+      font-size: 2em;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+      font-weight: 600;
     }
+    
     h3 {
-      margin-top: 20px;
+      color: #764ba2;
+      font-size: 1.4em;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 600;
     }
-    ul {
-      margin-left: 20px;
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
     }
-    .subtitle {
-      font-size: 1.1em;
+    
+    .skill-category {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .skill-category h3 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 1.2em;
+    }
+    
+    .skill-category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .skill-category li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .skill-category li:before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+    
+    .project-card {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 4px solid #764ba2;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .project-card strong {
+      color: #764ba2;
+      font-size: 1.15em;
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .publication-item {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .publication-item strong {
+      color: #2c3e50;
+    }
+    
+    .publication-item em {
       color: #555;
     }
-    footer {
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid #ccc;
-      font-size: 0.9em;
-    }
-    a {
-      color: #0066cc;
+    
+    .publication-item a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #667eea;
       text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
-    a:hover {
-      text-decoration: underline;
+    
+    .publication-item a:hover {
+      color: #764ba2;
+    }
+    
+    .author-badge {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      margin-top: 8px;
+    }
+    
+    .cv-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .cv-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    }
+    
+    footer {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .contact-item a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-item a:hover {
+      color: #764ba2;
+    }
+    
+    ul {
+      margin-left: 25px;
+    }
+    
+    ul li {
+      margin-bottom: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+      
+      .tagline {
+        font-size: 1em;
+      }
+      
+      .content {
+        padding: 30px 25px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+      }
+      
+      nav a {
+        text-align: center;
+      }
     }
   </style>
 </head>
-
 <body>
-  
-  <nav>
-  <a href="about.html">About</a> |
-  <a href="skills.html">Skills & Methods</a> |
-  <a href="publications.html">Publications</a> |
-  <a href="projects.html">Projects</a> |
-  <a href="research.html">Research Statement</a> |
-  <a href="contact.html">Contact</a>
-</nav>
-  
-<h1>Ramesh Eerapagula</h1>
-
-<p class="subtitle">
-PhD Research Scholar with interests in <strong>Data Science, Machine Learning, and Deep Learning</strong>,
-focusing on computational genomics and plant defense mechanisms.
-</p>
-
-<h2>Skills</h2>
-
-<h3>Data Science & AI</h3>
-<ul>
-  <li>Data Science with Python</li>
-  <li>Machine Learning</li>
-  <li>Deep Learning</li>
-</ul>
-
-<h3>Programming & Systems</h3>
-<ul>
-  <li>Python</li>
-  <li>C, C++</li>
-  <li>Bash Scripting</li>
-  <li>SLURM (HPC workload management)</li>
-</ul>
-
-<h2>Research Interests</h2>
-<ul>
-  <li>Plant immunity and defense signaling (PTI & ETI)</li>
-  <li>Genome-wide analysis of transcription factor and resistance gene families</li>
-  <li>Deep learning for gene and protein function prediction</li>
-</ul>
-
-<h2>Projects</h2>
-<ul>
-  <li>
-    <strong>Genome-wide analysis of NLR genes in amaranth</strong><br>
-    Identification, phylogeny, duplication patterns, synteny, and expression profiling.
-  </li>
-  <li>
-    <strong>Genome-wide analysis of NAC and MYB transcription factor families</strong><br>
-    Structural classification, evolutionary expansion, and regulatory analysis.
-  </li>
-  <li>
-    <strong>Deep learning model for plant defense-response gene prediction</strong><br>
-    Multi-layer feature engineering and neural network–based classification.
-  </li>
-</ul>
-
-<h2>Publications</h2>
-
-<ol>
-  <li>
-    <strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., & Mahato, A. K. (2025).
-    <strong>Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features.</strong>
-    <em>Scientific Reports</em>, <strong>15</strong>(1), 39968.
-    <a href="https://doi.org/10.1038/s41598-025-23630-7">DOI</a>
-    <br><em>(First author)</em>
-  </li>
-
-  <li>
-    Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., & Sen, P. (2026).
-    <strong>6-O-acetyldaidzein and frangulin B from <em>Halodule uninervis</em> as novel α-amylase inhibitors: A molecular dynamics perspective.</strong>
-    <em>Computational Biology and Chemistry</em>, <strong>121</strong>, 108848.
-    <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848">DOI</a>
-  </li>
-
-  <li>
-    Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., <em>et al.</em> (2025).
-    <strong>Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy.</strong>
-    <em>Journal of Neonatal Surgery</em>, <strong>14</strong>(13S), 1066–1077.
-    <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935">Link</a>
-  </li>
-
-  <li>
-    Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, <em>et al.</em> (2025).
-    <strong>Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum (<em>Sorghum bicolor</em> L. Moench) through meta-QTL analysis.</strong>
-    <em>Cereal Research Communications</em>, <strong>53</strong>(2), 757–769.
-    <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5">Link</a>
-  </li>
-</ol>
-
-
-<h2>Curriculum Vitae</h2>
-<p>
-<a href="Ramesh_CV.pdf">Download CV (PDF)</a>
-</p>
-
-<footer>
-<p>
-<strong>GitHub:</strong> <a href="https://github.com/Ramesh5591">github.com/Ramesh5591</a><br>
-<strong>Email:</strong> <a href="ramesheerapagula76@gmail.com">ramesheerapagula76@gmail.com</a>
-</p>
-</footer>
-
+  <div class="container">
+    <header>
+      <h1>Ramesh Eerapagula</h1>
+      <p class="tagline">
+        PhD Research Scholar specializing in Computational Biology, Machine Learning, and Deep Learning for plant genomics and defense mechanisms
+      </p>
+    </header>
+    
+    <nav>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills & Methods</a>
+      <a href="publications.html">Publications</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research Statement</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    
+    <div class="content">
+      <h2>Core Competencies</h2>
+      
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Data Science & AI</h3>
+          <ul>
+            <li>Data Science with Python</li>
+            <li>Machine Learning</li>
+            <li>Deep Learning</li>
+            <li>Statistical Analysis</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Programming & Tools</h3>
+          <ul>
+            <li>Python (NumPy, Pandas, Scikit-learn)</li>
+            <li>C/C++</li>
+            <li>Bash Scripting</li>
+            <li>SLURM (HPC Management)</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Bioinformatics</h3>
+          <ul>
+            <li>Genome-wide Analysis</li>
+            <li>Phylogenetic Analysis</li>
+            <li>Expression Profiling</li>
+            <li>Protein Function Prediction</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h2>Research Focus</h2>
+      <ul>
+        <li>Plant immunity and defense signaling mechanisms (PTI & ETI)</li>
+        <li>Genome-wide analysis of transcription factor and resistance gene families</li>
+        <li>Deep learning applications for gene and protein function prediction</li>
+        <li>Computational genomics and evolutionary biology</li>
+      </ul>
+    </div>
+    
+    <div class="content">
+      <h2>Featured Projects</h2>
+      
+      <div class="project-card">
+        <strong>Genome-wide Analysis of NLR Genes in Amaranth</strong>
+        <p>Comprehensive identification, phylogenetic analysis, duplication patterns, synteny mapping, and expression profiling of nucleotide-binding leucine-rich repeat genes in grain amaranth.</p>
+      </div>
+      
+      <div class="project-card">
+        <strong>NAC and MYB Transcription Factor Family Analysis</strong>
+        <p>Structural classification, evolutionary expansion patterns, and regulatory network analysis of key transcription factor families in plant species.</p>
+      </div>
+      
+      <div class="project-card">
+        <strong>Deep Learning for Plant Defense-Response Prediction</strong>
+        <p>Development of neural network-based classification models with multi-layer feature engineering for predicting plant defense-response genes.</p>
+      </div>
+    </div>
+    
+    <div class="content">
+      <h2>Recent Publications</h2>
+      
+      <div class="publication-item">
+        <strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., & Mahato, A. K. (2025).
+        <strong>Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features.</strong>
+        <em>Scientific Reports</em>, <strong>15</strong>(1), 39968.
+        <a href="https://doi.org/10.1038/s41598-025-23630-7" target="_blank">View Publication →</a>
+        <div class="author-badge">First Author</div>
+      </div>
+      
+      <div class="publication-item">
+        Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., & Sen, P. (2026).
+        <strong>6-O-acetyldaidzein and frangulin B from <em>Halodule uninervis</em> as novel α-amylase inhibitors: A molecular dynamics perspective.</strong>
+        <em>Computational Biology and Chemistry</em>, <strong>121</strong>, 108848.
+        <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848" target="_blank">View Publication →</a>
+      </div>
+      
+      <div class="publication-item">
+        Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., <em>et al.</em> (2025).
+        <strong>Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy.</strong>
+        <em>Journal of Neonatal Surgery</em>, <strong>14</strong>(13S), 1066–1077.
+        <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935" target="_blank">View Publication →</a>
+      </div>
+      
+      <div class="publication-item">
+        Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, <em>et al.</em> (2025).
+        <strong>Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum (<em>Sorghum bicolor</em> L. Moench) through meta-QTL analysis.</strong>
+        <em>Cereal Research Communications</em>, <strong>53</strong>(2), 757–769.
+        <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5" target="_blank">View Publication →</a>
+      </div>
+    </div>
+    
+    <div class="content" style="text-align: center;">
+      <h2>Curriculum Vitae</h2>
+      <p style="margin-bottom: 25px;">Download my complete academic and research profile</p>
+      <a href="Ramesh_CV.pdf" class="cv-button">Download CV (PDF)</a>
+    </div>
+    
+    <footer>
+      <h3 style="color: #2c3e50; margin-bottom: 20px;">Let's Connect</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>🔗</span>
+          <a href="https://github.com/Ramesh5591" target="_blank">github.com/Ramesh5591</a>
+        </div>
+        <div class="contact-item">
+          <span>📧</span>
+          <a href="mailto:ramesheerapagula76@gmail.com">ramesheerapagula76@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
